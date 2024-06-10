@@ -33,7 +33,7 @@ jobs:
 
       - name: Run POM tests
         run: |
-          cd .\tests\
+          cd tests
           xvfb-run -a pytest -v test_uiplaygroundhome.py
       
         
