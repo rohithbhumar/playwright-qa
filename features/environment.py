@@ -3,7 +3,7 @@ from pages.uiplaygroundhome import UIPlayGroundHome
 
 def before_all(context):
     context.playwright = sync_playwright().start()
-    context.browser = context.playwright.chromium.launch(headless=False)
+    context.browser = context.playwright.chromium.launch(headless=True)
     context.page = context.browser.new_page()
     context.ui_home = UIPlayGroundHome(page=context.page, url="http://www.uitestingplayground.com")
 
