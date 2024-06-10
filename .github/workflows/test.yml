@@ -23,10 +23,17 @@ jobs:
       - name: Ensure browsers are installed
         run: python -m playwright install chromium --with-deps
 
-      - name: Run tests
+      - name: Run Pytest tests
         run: |
           xvfb-run -a pytest -v -s --headed test_uiplayground.py
-          behave
-          cd ..
-          pytest -v tests/test_uiplaygroundhome.py
+
+      - name: Run Behave feature files
+        run: |
+          xvfb-run -a behave
+
+      - name: Run POM tests
+        run: |
+          cd .\tests\
+          xvfb-run -a pytest -v test_uiplaygroundhome.py
+      
         
