@@ -37,6 +37,10 @@ def test_load_delay(page: Page):
 
 
 def test_text_input(page: Page):
+    page.on('console', lambda msg: print(f"Console message: {msg.text}"))
+    # page.on('request', lambda request: print(f"Request: {request.method} {request.url}"))
+    # page.on('response', lambda response: print(f"Response: {response.status} {response.url}"))
+
     text_input = page.get_by_role("link", name="Text Input")
     text_input.click()
 
@@ -44,8 +48,10 @@ def test_text_input(page: Page):
     user_text = "Good button"
     input_field.fill(user_text)
     updating_button = page.locator("css=button#updatingButton")
+    expect(updating_button).to_be_visible()
+    expect(updating_button).to_be_enabled()
     updating_button.click(timeout=5000)
-
+    # breakpoint()
     expect(updating_button).to_have_text(user_text)
 
 
