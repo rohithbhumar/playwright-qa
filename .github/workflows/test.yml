@@ -4,7 +4,6 @@ on:
   - push
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
 
@@ -19,13 +18,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install - r requirements.txt
+          pip install -r requirements.txt
 
       - name: Ensure browsers are installed
         run: python -m playwright install chromium --with-deps
 
       - name: Run tests
-        run: |
-#          cd cubeit
-#          python -m http.server 8000 &
-          pytest -v test_uiplayground.py
+        run: pytest -v test_uiplayground.py
