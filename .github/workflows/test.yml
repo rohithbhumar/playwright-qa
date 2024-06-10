@@ -24,4 +24,9 @@ jobs:
         run: python -m playwright install chromium --with-deps
 
       - name: Run tests
-        run: xvfb-run pytest -v -s --headed test_uiplayground.py
+        run: |
+          xvfb-run -a pytest -v -s --headed test_uiplayground.py
+          behave
+          cd ..
+          pytest -v tests/test_uiplaygroundhome.py
+        
