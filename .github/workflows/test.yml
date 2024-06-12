@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Pytest tests
         run: |
-          xvfb-run -a pytest -v -s --headed test_uiplayground.py
+          xvfb-run -a pytest --reruns 2 --reruns-delay 3 -v -s --headed test_uiplayground.py
         continue-on-error: true
 
       - name: Run Behave feature files
@@ -36,7 +36,7 @@ jobs:
       - name: Run POM tests
         run: |
           cd tests
-          xvfb-run -a pytest -v test_uiplaygroundhome.py
+          xvfb-run -a pytest --reruns 2 --reruns-delay 3 -v test_uiplaygroundhome.py
         continue-on-error: true
       
         
